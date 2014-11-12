@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9453A967-0B2A-4590-8A55-0F73C775BC3A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FDACDataSetProvider_design.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FDACDataSetProvider.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FDACDataSetProvider_design">
+        <MSBuild Projects="FDACDataSetProvider_design.dproj"/>
+    </Target>
+    <Target Name="FDACDataSetProvider_design:Clean">
+        <MSBuild Projects="FDACDataSetProvider_design.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FDACDataSetProvider_design:Make">
+        <MSBuild Projects="FDACDataSetProvider_design.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FDACDataSetProvider">
+        <MSBuild Projects="FDACDataSetProvider.dproj"/>
+    </Target>
+    <Target Name="FDACDataSetProvider:Clean">
+        <MSBuild Projects="FDACDataSetProvider.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FDACDataSetProvider:Make">
+        <MSBuild Projects="FDACDataSetProvider.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FDACDataSetProvider_design;FDACDataSetProvider"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FDACDataSetProvider_design:Clean;FDACDataSetProvider:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FDACDataSetProvider_design:Make;FDACDataSetProvider:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
